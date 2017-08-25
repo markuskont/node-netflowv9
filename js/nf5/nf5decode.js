@@ -14,9 +14,9 @@ function nf5PktDecode(msg,rinfo) {
     var t;
     while(buf.length>0) {
         out.flows.push({
-            ipv4_src_addr: (t=buf.readUInt32BE(0),(parseInt(t/16777216)%256)+'.'+(parseInt(t/65536)%256)+'.'+(parseInt(t/256)%256)+'.'+(t%256)),
-            ipv4_dst_addr: (t=buf.readUInt32BE(4),(parseInt(t/16777216)%256)+'.'+(parseInt(t/65536)%256)+'.'+(parseInt(t/256)%256)+'.'+(t%256)),
-            ipv4_next_hop: (t=buf.readUInt32BE(8),(parseInt(t/16777216)%256)+'.'+(parseInt(t/65536)%256)+'.'+(parseInt(t/256)%256)+'.'+(t%256)),
+            ipv4_src_addr: buf.readUInt32BE(0),
+            ipv4_dst_addr: buf.readUInt32BE(4),
+            ipv4_next_hop: buf.readUInt32BE(8),
             input_snmp: buf.readUInt16BE(12),
             output_snmp: buf.readUInt16BE(14),
             in_pkts: buf.readUInt32BE(16),
